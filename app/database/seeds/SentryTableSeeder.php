@@ -15,6 +15,7 @@ class SentryTableSeeder extends Seeder {
                 'first_name'  => 'SathishKumar',
                 'last_name'   => 'Selvamani',
                 'activated'   => 1,
+                'wallet'      => 100
             ));
  
             Sentry::getGroupProvider()->create(array(
