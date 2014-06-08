@@ -5,9 +5,11 @@ class SentryTableSeeder extends Seeder {
 	public function run()
 	{
 	   // Uncomment the below to wipe the table clean before populating
-            DB::table('users')->truncate();
+            DB::table('mobileverification')->delete();
+            DB::table('users')->delete();
             DB::table('groups')->truncate();
             DB::table('users_groups')->truncate();
+            
 
 	    Sentry::getUserProvider()->create(array(
                 'email'       => 'admin@satz.com',
@@ -22,11 +24,18 @@ class SentryTableSeeder extends Seeder {
                 'name'        => 'Satz',
                 'permissions' => array('admin' => 1),
             ));
-
+            
             // Assign user permissions
             $adminUser  = Sentry::getUserProvider()->findByLogin('admin@satz.com');
             $adminGroup = Sentry::getGroupProvider()->findByName('Satz');
             $adminUser->addGroup($adminGroup);
+            
+            MobileVerification::insert(array(
+                'id' => 1,
+                'user_id' => 1,
+                'verificationcode'=>"4rueudhFR"
+               
+        ));
 	}
 
 }

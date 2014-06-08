@@ -24,6 +24,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @return mixed
 	 */
+           public function MobileVerification()
+    {
+        return $this->hasOne('MobileVerification');
+    }
 	public function getAuthIdentifier()
 	{
 		return $this->getKey();
